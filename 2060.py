@@ -18,9 +18,9 @@ pois ela deve ser seguida rigorosamente.
 n = int(input())
 wert = [int(x) for x in input().split()]
 
-count2, count3, count4, count5 = 0, 0, 0, 0
-
+count, count2, count3, count4, count5 = 0, 0, 0, 0, 0
 for x in wert:
+    count += 1
     if x % 2 == 0:
         count2 += 1
     if x % 3 == 0:
@@ -29,6 +29,8 @@ for x in wert:
         count4 += 1
     if x % 5 == 0:
         count5 += 1
+    if count == n:
+        break
 
 print(f"{count2} Multiplo(s) de 2")
 print(f"{count3} Multiplo(s) de 3")
