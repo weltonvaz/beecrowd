@@ -1,26 +1,28 @@
-import sys
 from datetime import date
 
-# Define the date for Christmas
-christmas = date(2016, 12, 25)
+while True:
+    try:
+        # Lê a entrada do usuário e converte para inteiros
+        mes, dia = map(int, input().split())
 
-# Iterate through each line of input until EOF
-for line in sys.stdin:
-    # Split the input line into month and day
-    month, day = map(int, line.strip().split())
+        # Cria objetos de data para a data atual e o Natal
+        data_atual = date(2024, mes, dia)
+        natal = date(2024, 12, 25)
+        
+        # Calcula a diferença em dias entre o Natal e a data atual
+        diferenca = (natal - data_atual).days
 
-    # Create a date object for the input date
-    current_date = date(2016, month, day)
+        # Verifica e imprime a mensagem apropriada com base na diferença em dias
+        if diferenca == 0:
+            print("E natal!")
+        elif diferenca == 1:
+            print("E vespera de natal!")
+        elif diferenca < 0:
+            print("Ja passou!")
+        else:
+            print(f"Faltam {diferenca} dias para o natal!")
     
-    # Calculate the difference in days between the current date and Christmas
-    delta = (christmas - current_date).days
-    
-    # Determine the output message based on the number of days until Christmas
-    if delta == 0:
-        print("E natal!")
-    elif delta == 1:
-        print("E vespera de natal!")
-    elif delta < 0:
-        print("Ja passou!")
-    else:
-        print(f"Faltam {delta} dias para o natal!")
+    # Termina o loop ao encontrar o fim do arquivo (EOF)
+    except EOFError:
+        break
+
